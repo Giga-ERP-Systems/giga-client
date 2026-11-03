@@ -33,7 +33,7 @@ function Splash() {
         </p>
       </div>
       <div className="absolute bottom-20 h-1 w-28 overflow-hidden rounded-full bg-primary-foreground/15">
-        <div className="h-full w-1/2 animate-[scan_1.4s_ease-in-out_infinite] rounded-full bg-teal" style={{ animationName: "slide" }} />
+        <div className="h-full w-1/2 rounded-full bg-teal" style={{ animation: "slide 1.4s ease-in-out infinite" }} />
       </div>
       <style>{`@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}}`}</style>
       <Logo light className="sr-only" />
