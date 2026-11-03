@@ -14,12 +14,20 @@ import { Route as AccountRouteImport } from './routes/account'
 import { Route as ActivationRouteImport } from './routes/activation'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ReceiptsRouteImport } from './routes/receipts'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as StatementRouteImport } from './routes/statement'
 import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as WelcomeRouteImport } from './routes/welcome'
+import { Route as ApprovalsIndexRouteImport } from './routes/approvals.index'
+import { Route as ApprovalsIdRouteImport } from './routes/approvals.$id'
+import { Route as InboxIndexRouteImport } from './routes/inbox.index'
+import { Route as InboxIdRouteImport } from './routes/inbox.$id'
+import { Route as InboxNewRouteImport } from './routes/inbox.new'
 import { Route as InstallmentIdRouteImport } from './routes/installment.$id'
+import { Route as ProfileIndexRouteImport } from './routes/profile.index'
+import { Route as ProfileEditRouteImport } from './routes/profile.edit'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsIdRouteImport } from './routes/projects.$id'
 
@@ -48,6 +56,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReceiptsRoute = ReceiptsRouteImport.update({
   id: '/receipts',
   path: '/receipts',
@@ -73,9 +86,44 @@ const WelcomeRoute = WelcomeRouteImport.update({
   path: '/welcome',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApprovalsIndexRoute = ApprovalsIndexRouteImport.update({
+  id: '/approvals/',
+  path: '/approvals/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApprovalsIdRoute = ApprovalsIdRouteImport.update({
+  id: '/approvals/$id',
+  path: '/approvals/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InboxIndexRoute = InboxIndexRouteImport.update({
+  id: '/inbox/',
+  path: '/inbox/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InboxIdRoute = InboxIdRouteImport.update({
+  id: '/inbox/$id',
+  path: '/inbox/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InboxNewRoute = InboxNewRouteImport.update({
+  id: '/inbox/new',
+  path: '/inbox/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InstallmentIdRoute = InstallmentIdRouteImport.update({
   id: '/installment/$id',
   path: '/installment/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileIndexRoute = ProfileIndexRouteImport.update({
+  id: '/profile/',
+  path: '/profile/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileEditRoute = ProfileEditRouteImport.update({
+  id: '/profile/edit',
+  path: '/profile/edit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
@@ -95,13 +143,21 @@ export interface FileRoutesByFullPath {
   '/activation': typeof ActivationRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/receipts': typeof ReceiptsRoute
   '/register': typeof RegisterRoute
   '/statement': typeof StatementRoute
   '/verify': typeof VerifyRoute
   '/welcome': typeof WelcomeRoute
+  '/approvals/$id': typeof ApprovalsIdRoute
+  '/inbox/$id': typeof InboxIdRoute
+  '/inbox/new': typeof InboxNewRoute
   '/installment/$id': typeof InstallmentIdRoute
+  '/profile/edit': typeof ProfileEditRoute
   '/projects/$id': typeof ProjectsIdRoute
+  '/approvals/': typeof ApprovalsIndexRoute
+  '/inbox/': typeof InboxIndexRoute
+  '/profile/': typeof ProfileIndexRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -110,13 +166,21 @@ export interface FileRoutesByTo {
   '/activation': typeof ActivationRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/receipts': typeof ReceiptsRoute
   '/register': typeof RegisterRoute
   '/statement': typeof StatementRoute
   '/verify': typeof VerifyRoute
   '/welcome': typeof WelcomeRoute
+  '/approvals/$id': typeof ApprovalsIdRoute
+  '/inbox/$id': typeof InboxIdRoute
+  '/inbox/new': typeof InboxNewRoute
   '/installment/$id': typeof InstallmentIdRoute
+  '/profile/edit': typeof ProfileEditRoute
   '/projects/$id': typeof ProjectsIdRoute
+  '/approvals': typeof ApprovalsIndexRoute
+  '/inbox': typeof InboxIndexRoute
+  '/profile': typeof ProfileIndexRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
@@ -126,13 +190,21 @@ export interface FileRoutesById {
   '/activation': typeof ActivationRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/receipts': typeof ReceiptsRoute
   '/register': typeof RegisterRoute
   '/statement': typeof StatementRoute
   '/verify': typeof VerifyRoute
   '/welcome': typeof WelcomeRoute
+  '/approvals/$id': typeof ApprovalsIdRoute
+  '/inbox/$id': typeof InboxIdRoute
+  '/inbox/new': typeof InboxNewRoute
   '/installment/$id': typeof InstallmentIdRoute
+  '/profile/edit': typeof ProfileEditRoute
   '/projects/$id': typeof ProjectsIdRoute
+  '/approvals/': typeof ApprovalsIndexRoute
+  '/inbox/': typeof InboxIndexRoute
+  '/profile/': typeof ProfileIndexRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
@@ -143,13 +215,21 @@ export interface FileRouteTypes {
     | '/activation'
     | '/home'
     | '/login'
+    | '/notifications'
     | '/receipts'
     | '/register'
     | '/statement'
     | '/verify'
     | '/welcome'
+    | '/approvals/$id'
+    | '/inbox/$id'
+    | '/inbox/new'
     | '/installment/$id'
+    | '/profile/edit'
     | '/projects/$id'
+    | '/approvals/'
+    | '/inbox/'
+    | '/profile/'
     | '/projects/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -158,13 +238,21 @@ export interface FileRouteTypes {
     | '/activation'
     | '/home'
     | '/login'
+    | '/notifications'
     | '/receipts'
     | '/register'
     | '/statement'
     | '/verify'
     | '/welcome'
+    | '/approvals/$id'
+    | '/inbox/$id'
+    | '/inbox/new'
     | '/installment/$id'
+    | '/profile/edit'
     | '/projects/$id'
+    | '/approvals'
+    | '/inbox'
+    | '/profile'
     | '/projects'
   id:
     | '__root__'
@@ -173,13 +261,21 @@ export interface FileRouteTypes {
     | '/activation'
     | '/home'
     | '/login'
+    | '/notifications'
     | '/receipts'
     | '/register'
     | '/statement'
     | '/verify'
     | '/welcome'
+    | '/approvals/$id'
+    | '/inbox/$id'
+    | '/inbox/new'
     | '/installment/$id'
+    | '/profile/edit'
     | '/projects/$id'
+    | '/approvals/'
+    | '/inbox/'
+    | '/profile/'
     | '/projects/'
   fileRoutesById: FileRoutesById
 }
@@ -189,13 +285,21 @@ export interface RootRouteChildren {
   ActivationRoute: typeof ActivationRoute
   HomeRoute: typeof HomeRoute
   LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
   ReceiptsRoute: typeof ReceiptsRoute
   RegisterRoute: typeof RegisterRoute
   StatementRoute: typeof StatementRoute
   VerifyRoute: typeof VerifyRoute
   WelcomeRoute: typeof WelcomeRoute
+  ApprovalsIdRoute: typeof ApprovalsIdRoute
+  InboxIdRoute: typeof InboxIdRoute
+  InboxNewRoute: typeof InboxNewRoute
   InstallmentIdRoute: typeof InstallmentIdRoute
+  ProfileEditRoute: typeof ProfileEditRoute
   ProjectsIdRoute: typeof ProjectsIdRoute
+  ApprovalsIndexRoute: typeof ApprovalsIndexRoute
+  InboxIndexRoute: typeof InboxIndexRoute
+  ProfileIndexRoute: typeof ProfileIndexRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
@@ -236,6 +340,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/receipts': {
       id: '/receipts'
       path: '/receipts'
@@ -271,11 +382,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WelcomeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/approvals/': {
+      id: '/approvals/'
+      path: '/approvals'
+      fullPath: '/approvals/'
+      preLoaderRoute: typeof ApprovalsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/approvals/$id': {
+      id: '/approvals/$id'
+      path: '/approvals/$id'
+      fullPath: '/approvals/$id'
+      preLoaderRoute: typeof ApprovalsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inbox/': {
+      id: '/inbox/'
+      path: '/inbox'
+      fullPath: '/inbox/'
+      preLoaderRoute: typeof InboxIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inbox/$id': {
+      id: '/inbox/$id'
+      path: '/inbox/$id'
+      fullPath: '/inbox/$id'
+      preLoaderRoute: typeof InboxIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inbox/new': {
+      id: '/inbox/new'
+      path: '/inbox/new'
+      fullPath: '/inbox/new'
+      preLoaderRoute: typeof InboxNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/installment/$id': {
       id: '/installment/$id'
       path: '/installment/$id'
       fullPath: '/installment/$id'
       preLoaderRoute: typeof InstallmentIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/': {
+      id: '/profile/'
+      path: '/profile'
+      fullPath: '/profile/'
+      preLoaderRoute: typeof ProfileIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/edit': {
+      id: '/profile/edit'
+      path: '/profile/edit'
+      fullPath: '/profile/edit'
+      preLoaderRoute: typeof ProfileEditRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/': {
@@ -301,13 +461,21 @@ const rootRouteChildren: RootRouteChildren = {
   ActivationRoute: ActivationRoute,
   HomeRoute: HomeRoute,
   LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
   ReceiptsRoute: ReceiptsRoute,
   RegisterRoute: RegisterRoute,
   StatementRoute: StatementRoute,
   VerifyRoute: VerifyRoute,
   WelcomeRoute: WelcomeRoute,
+  ApprovalsIdRoute: ApprovalsIdRoute,
+  InboxIdRoute: InboxIdRoute,
+  InboxNewRoute: InboxNewRoute,
   InstallmentIdRoute: InstallmentIdRoute,
+  ProfileEditRoute: ProfileEditRoute,
   ProjectsIdRoute: ProjectsIdRoute,
+  ApprovalsIndexRoute: ApprovalsIndexRoute,
+  InboxIndexRoute: InboxIndexRoute,
+  ProfileIndexRoute: ProfileIndexRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport
